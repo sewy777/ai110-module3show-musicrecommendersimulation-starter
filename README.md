@@ -11,7 +11,7 @@ Your goal is to:
 - Evaluate what your system gets right and wrong
 - Reflect on how this mirrors real world AI recommenders
 
-Replace this paragraph with your own summary of what your version does.
+This project is a content-based music recommender built in Python. It loads a catalog of 18 songs from a CSV file, takes a user's preferred genre, mood, and energy level, and scores every song against those preferences using a simple weighted formula. The top 5 matches are returned with an explanation for why each one was recommended. The goal was to understand how platforms like Spotify decide what to play next — and to see where even a simple algorithm can produce results that actually feel right, and where it starts to fall apart.
 
 ---
 
@@ -296,15 +296,12 @@ When genre weight was halved and energy similarity doubled, middle rankings shif
 
 ## Limitations and Risks
 
-Summarize some limitations of your recommender.
+- The catalog only has 18 songs, so genres with one track (like classical or metal) have almost no real competition — the system just defaults to energy similarity for the rest of the list
+- Genre gets +2.0 points while mood only gets +1.0, so the system basically treats genre as a hard filter even when a mood match would feel more accurate
+- The system doesn't understand lyrics, context, or how a song actually makes you feel — it only sees numbers and labels
+- If the same artist has multiple songs in a genre, they can both show up in the top 5 even if variety would be better
 
-Examples:
-
-- It only works on a tiny catalog
-- It does not understand lyrics or language
-- It might over favor one genre or mood
-
-You will go deeper on this in your model card.
+See [model_card.md](model_card.md) for a deeper breakdown of bias and limitations.
 
 ---
 
@@ -314,10 +311,9 @@ Read and complete `model_card.md`:
 
 [**Model Card**](model_card.md)
 
-Write 1 to 2 paragraphs here about what you learned:
+The biggest thing this project taught me is that recommender systems are less about complex AI and more about what you choose to measure and how much you weight each thing. Just picking genre, mood, and energy — and deciding genre is worth twice as much as mood — already shapes which songs "win" in ways that aren't always fair. I didn't expect such a small number change to matter so much until I actually ran the weight shift experiment and saw the rankings shift.
 
-- about how recommenders turn data into predictions
-- about where bias or unfairness could show up in systems like this
+It also made me think differently about bias. The system isn't biased because it's broken — it's biased because of choices that seemed reasonable at design time, like giving genre more weight. That's the same thing that happens in real products, just at a much bigger scale. See [model_card.md](model_card.md) for the full reflection and documentation.
 
 
 ---
