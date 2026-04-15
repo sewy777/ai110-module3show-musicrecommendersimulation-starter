@@ -140,11 +140,157 @@ Top recommendations:
 
 ## Experiments You Tried
 
-Use this section to document the experiments you ran. For example:
+### Profile: High-Energy Pop
 
-- What happened when you changed the weight on genre from 2.0 to 0.5
-- What happened when you added tempo or valence to the score
-- How did your system behave for different types of users
+```
+==================================================
+Profile: High-Energy Pop
+Prefs  : {'genre': 'pop', 'mood': 'happy', 'energy': 0.85}
+==================================================
+1. Sunrise City by Neon Echo
+   Score : 3.97
+   Why   : genre match (+2.0), mood match (+1.0), energy similarity (+0.97)
+
+2. Gym Hero by Max Pulse
+   Score : 2.92
+   Why   : genre match (+2.0), energy similarity (+0.92)
+
+3. Rooftop Lights by Indigo Parade
+   Score : 1.91
+   Why   : mood match (+1.0), energy similarity (+0.91)
+
+4. Storm Runner by Voltline
+   Score : 0.94
+   Why   : energy similarity (+0.94)
+
+5. Night Drive Loop by Neon Echo
+   Score : 0.90
+   Why   : energy similarity (+0.90)
+```
+
+### Profile: Chill Lofi
+
+```
+==================================================
+Profile: Chill Lofi
+Prefs  : {'genre': 'lofi', 'mood': 'chill', 'energy': 0.38}
+==================================================
+1. Library Rain by Paper Lanterns
+   Score : 3.97
+   Why   : genre match (+2.0), mood match (+1.0), energy similarity (+0.97)
+
+2. Midnight Coding by LoRoom
+   Score : 3.96
+   Why   : genre match (+2.0), mood match (+1.0), energy similarity (+0.96)
+
+3. Focus Flow by LoRoom
+   Score : 2.98
+   Why   : genre match (+2.0), energy similarity (+0.98)
+
+4. Spacewalk Thoughts by Orbit Bloom
+   Score : 1.90
+   Why   : mood match (+1.0), energy similarity (+0.90)
+
+5. Coffee Shop Stories by Slow Stereo
+   Score : 0.99
+   Why   : energy similarity (+0.99)
+```
+
+### Profile: Deep Intense Rock
+
+```
+==================================================
+Profile: Deep Intense Rock
+Prefs  : {'genre': 'rock', 'mood': 'intense', 'energy': 0.92}
+==================================================
+1. Storm Runner by Voltline
+   Score : 3.99
+   Why   : genre match (+2.0), mood match (+1.0), energy similarity (+0.99)
+
+2. Gym Hero by Max Pulse
+   Score : 1.99
+   Why   : mood match (+1.0), energy similarity (+0.99)
+
+3. Iron Will by Shatter Point
+   Score : 1.95
+   Why   : mood match (+1.0), energy similarity (+0.95)
+
+4. Bass Drop Heaven by Circuit Breaker
+   Score : 0.97
+   Why   : energy similarity (+0.97)
+
+5. Sunrise City by Neon Echo
+   Score : 0.90
+   Why   : energy similarity (+0.90)
+```
+
+### Profile: High-Energy Classical (adversarial)
+
+```
+==================================================
+Profile: High-Energy Classical (adversarial)
+Prefs  : {'genre': 'classical', 'mood': 'euphoric', 'energy': 0.95}
+==================================================
+1. Morning Mist by Clara Voss
+   Score : 2.27
+   Why   : genre match (+2.0), energy similarity (+0.27)
+
+2. Bass Drop Heaven by Circuit Breaker
+   Score : 2.00
+   Why   : mood match (+1.0), energy similarity (+1.00)
+
+3. Gym Hero by Max Pulse
+   Score : 0.98
+   Why   : energy similarity (+0.98)
+
+4. Iron Will by Shatter Point
+   Score : 0.98
+   Why   : energy similarity (+0.98)
+
+5. Storm Runner by Voltline
+   Score : 0.96
+   Why   : energy similarity (+0.96)
+```
+
+### Profile: Sad EDM (adversarial)
+
+```
+==================================================
+Profile: Sad EDM (adversarial)
+Prefs  : {'genre': 'edm', 'mood': 'sad', 'energy': 0.9}
+==================================================
+1. Bass Drop Heaven by Circuit Breaker
+   Score : 2.95
+   Why   : genre match (+2.0), energy similarity (+0.95)
+
+2. Storm Runner by Voltline
+   Score : 0.99
+   Why   : energy similarity (+0.99)
+
+3. Gym Hero by Max Pulse
+   Score : 0.97
+   Why   : energy similarity (+0.97)
+
+4. Iron Will by Shatter Point
+   Score : 0.93
+   Why   : energy similarity (+0.93)
+
+5. Sunrise City by Neon Echo
+   Score : 0.92
+   Why   : energy similarity (+0.92)
+```
+
+### Weight Shift Experiment (genre +2.0 → +1.0, energy similarity doubled)
+
+When genre weight was halved and energy similarity doubled, middle rankings shifted noticeably. For High-Energy Pop, `Rooftop Lights` (mood match + high energy, wrong genre) climbed much closer to `Gym Hero` (genre match, wrong mood). The top spot didn't change, but the gap between 2nd and 3rd narrowed — showing that the original weights make genre act almost like a hard filter rather than one factor among several.
+
+```
+1. Sunrise City by Neon Echo    — Score: 3.94  (genre +1.0, mood +1.0, energy +1.94)
+2. Gym Hero by Max Pulse        — Score: 2.84  (genre +1.0, energy +1.84)
+3. Rooftop Lights by Indigo     — Score: 2.82  (mood +1.0, energy +1.82)  ← moved up
+4. Storm Runner by Voltline     — Score: 1.88  (energy +1.88)
+5. Night Drive Loop by Neon Echo— Score: 1.80  (energy +1.80)
+```
 
 ---
 
